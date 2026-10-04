@@ -1,0 +1,1477 @@
+{
+ "runs": 60,
+ "outbreak_cycles": 2,
+ "min_downstream_homes": 0,
+ "households": 140,
+ "ensemble": 8,
+ "ensemble_mode": "mixed",
+ "alerts": 29,
+ "detectable": 35,
+ "detected": 28,
+ "detection_rate": 0.8,
+ "false_alarms": 1,
+ "false_alarm_rate": 0.017,
+ "alert_in_first_supply_rate": 0.607,
+ "gis": {
+  "median_error_m": 16.1,
+  "p90_error_m": 84.3,
+  "within_50m_rate": 0.821,
+  "truth_in_region_rate": 0.964,
+  "median_region_m": 71.8,
+  "median_ring_m": 41.2
+ },
+ "rebuilt": {
+  "median_error_m": 21.2,
+  "p90_error_m": 126.7,
+  "within_50m_rate": 0.786,
+  "truth_in_region_rate": 0.75,
+  "median_region_m": 64.5,
+  "median_ring_m": 32.4
+ },
+ "complaints": {
+  "median_first_ticket_error_m": 156.9,
+  "median_centroid_error_m": 186.8
+ },
+ "rows": [
+  {
+   "seed": 1000,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 477.6,
+    "centroid_error_m": 310.7,
+    "n_tickets": 6
+   },
+   "gis": {
+    "error_m": 151.4,
+    "truth_in_region": true,
+    "region_m": 332.8,
+    "ring_m": 122.5
+   },
+   "rebuilt": {
+    "error_m": 151.4,
+    "truth_in_region": false,
+    "region_m": 150.1,
+    "ring_m": 72.1
+   }
+  },
+  {
+   "seed": 1001,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 2,
+   "complaints": {
+    "first_ticket_error_m": 33.1,
+    "centroid_error_m": 323.7,
+    "n_tickets": 7
+   },
+   "gis": {
+    "error_m": 15.4,
+    "truth_in_region": true,
+    "region_m": 115.2,
+    "ring_m": 46.9
+   },
+   "rebuilt": {
+    "error_m": 50.0,
+    "truth_in_region": false,
+    "region_m": 113.8,
+    "ring_m": 45.5
+   }
+  },
+  {
+   "seed": 1002,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 927.1,
+    "centroid_error_m": 725.8,
+    "n_tickets": 3
+   },
+   "gis": {
+    "error_m": 884.1,
+    "truth_in_region": false,
+    "region_m": 1025.1,
+    "ring_m": 884.1
+   },
+   "rebuilt": {
+    "error_m": 884.1,
+    "truth_in_region": false,
+    "region_m": 96.2,
+    "ring_m": 42.5
+   }
+  },
+  {
+   "seed": 1003,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 18,
+   "complaints": {
+    "first_ticket_error_m": 113.4,
+    "centroid_error_m": 147.2,
+    "n_tickets": 23
+   },
+   "gis": {
+    "error_m": 3.0,
+    "truth_in_region": true,
+    "region_m": 16.9,
+    "ring_m": 15.0
+   },
+   "rebuilt": {
+    "error_m": 3.0,
+    "truth_in_region": true,
+    "region_m": 16.9,
+    "ring_m": 15.0
+   }
+  },
+  {
+   "seed": 1004,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 834.8,
+    "centroid_error_m": 552.8,
+    "n_tickets": 2
+   },
+   "gis": {
+    "error_m": 389.2,
+    "truth_in_region": true,
+    "region_m": 4625.5,
+    "ring_m": 652.0
+   },
+   "rebuilt": {
+    "error_m": 396.3,
+    "truth_in_region": false,
+    "region_m": 1446.2,
+    "ring_m": 699.5
+   }
+  },
+  {
+   "seed": 1005,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 8,
+   "complaints": {
+    "first_ticket_error_m": 548.5,
+    "centroid_error_m": 66.3,
+    "n_tickets": 12
+   },
+   "gis": {
+    "error_m": 3.3,
+    "truth_in_region": true,
+    "region_m": 70.1,
+    "ring_m": 35.0
+   },
+   "rebuilt": {
+    "error_m": 3.3,
+    "truth_in_region": true,
+    "region_m": 15.3,
+    "ring_m": 15.0
+   }
+  },
+  {
+   "seed": 1006,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 4,
+   "complaints": {
+    "first_ticket_error_m": 509.4,
+    "centroid_error_m": 113.6,
+    "n_tickets": 10
+   },
+   "gis": {
+    "error_m": 73.9,
+    "truth_in_region": true,
+    "region_m": 133.3,
+    "ring_m": 68.0
+   },
+   "rebuilt": {
+    "error_m": 36.5,
+    "truth_in_region": true,
+    "region_m": 57.7,
+    "ring_m": 29.1
+   }
+  },
+  {
+   "seed": 1007,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 2,
+   "complaints": {
+    "first_ticket_error_m": 158.3,
+    "centroid_error_m": 145.8,
+    "n_tickets": 9
+   },
+   "gis": {
+    "error_m": 27.2,
+    "truth_in_region": true,
+    "region_m": 107.6,
+    "ring_m": 48.4
+   },
+   "rebuilt": {
+    "error_m": 147.0,
+    "truth_in_region": false,
+    "region_m": 88.6,
+    "ring_m": 42.9
+   }
+  },
+  {
+   "seed": 1008,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 392.0,
+    "centroid_error_m": 526.7,
+    "n_tickets": 5
+   },
+   "gis": {
+    "error_m": 386.1,
+    "truth_in_region": false,
+    "region_m": 252.1,
+    "ring_m": 110.0
+   },
+   "rebuilt": {
+    "error_m": 514.8,
+    "truth_in_region": false,
+    "region_m": 233.4,
+    "ring_m": 146.8
+   }
+  },
+  {
+   "seed": 1009,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 633.1,
+    "centroid_error_m": 342.8,
+    "n_tickets": 7
+   },
+   "gis": {
+    "error_m": 125.0,
+    "truth_in_region": false,
+    "region_m": 244.4,
+    "ring_m": 448.7
+   },
+   "rebuilt": {
+    "error_m": 125.0,
+    "truth_in_region": false,
+    "region_m": 208.1,
+    "ring_m": 410.9
+   }
+  },
+  {
+   "seed": 1010,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 464.3,
+    "centroid_error_m": 601.1,
+    "n_tickets": 4
+   },
+   "gis": {
+    "error_m": 614.3,
+    "truth_in_region": true,
+    "region_m": 2623.4,
+    "ring_m": 674.6
+   },
+   "rebuilt": {
+    "error_m": 527.0,
+    "truth_in_region": false,
+    "region_m": 2317.1,
+    "ring_m": 656.6
+   }
+  },
+  {
+   "seed": 1011,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 514.5,
+    "centroid_error_m": 498.0,
+    "n_tickets": 4
+   },
+   "gis": {
+    "error_m": 0.1,
+    "truth_in_region": true,
+    "region_m": 899.6,
+    "ring_m": 732.5
+   },
+   "rebuilt": {
+    "error_m": 0.1,
+    "truth_in_region": true,
+    "region_m": 35.3,
+    "ring_m": 562.4
+   }
+  },
+  {
+   "seed": 1012,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 683.3,
+    "centroid_error_m": 260.0,
+    "n_tickets": 4
+   },
+   "gis": {
+    "error_m": 28.3,
+    "truth_in_region": true,
+    "region_m": 4431.0,
+    "ring_m": 714.6
+   },
+   "rebuilt": {
+    "error_m": 28.3,
+    "truth_in_region": true,
+    "region_m": 1329.5,
+    "ring_m": 739.8
+   }
+  },
+  {
+   "seed": 1013,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 457.8,
+    "centroid_error_m": 403.5,
+    "n_tickets": 6
+   },
+   "gis": {
+    "error_m": 426.5,
+    "truth_in_region": true,
+    "region_m": 5740.3,
+    "ring_m": 662.1
+   },
+   "rebuilt": {
+    "error_m": 391.3,
+    "truth_in_region": true,
+    "region_m": 1775.1,
+    "ring_m": 627.3
+   }
+  },
+  {
+   "seed": 1014,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 372.8,
+    "centroid_error_m": 512.9,
+    "n_tickets": 5
+   },
+   "gis": {
+    "error_m": 740.1,
+    "truth_in_region": false,
+    "region_m": 1567.6,
+    "ring_m": 762.5
+   },
+   "rebuilt": {
+    "error_m": 740.1,
+    "truth_in_region": false,
+    "region_m": 1153.3,
+    "ring_m": 714.9
+   }
+  },
+  {
+   "seed": 1015,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 466.3,
+    "centroid_error_m": 195.3,
+    "n_tickets": 8
+   },
+   "gis": {
+    "error_m": 92.3,
+    "truth_in_region": true,
+    "region_m": 357.1,
+    "ring_m": 451.2
+   },
+   "rebuilt": {
+    "error_m": 92.3,
+    "truth_in_region": false,
+    "region_m": 241.3,
+    "ring_m": 382.3
+   }
+  },
+  {
+   "seed": 1016,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 84,
+   "complaints": {
+    "first_ticket_error_m": 133.7,
+    "centroid_error_m": 333.8,
+    "n_tickets": 48
+   },
+   "gis": {
+    "error_m": 5.4,
+    "truth_in_region": true,
+    "region_m": 38.5,
+    "ring_m": 24.7
+   },
+   "rebuilt": {
+    "error_m": 5.4,
+    "truth_in_region": true,
+    "region_m": 38.5,
+    "ring_m": 24.2
+   }
+  },
+  {
+   "seed": 1017,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 284.9,
+    "centroid_error_m": 284.9,
+    "n_tickets": 1
+   },
+   "gis": {
+    "error_m": 268.0,
+    "truth_in_region": false,
+    "region_m": 224.9,
+    "ring_m": 69.9
+   },
+   "rebuilt": {
+    "error_m": 290.6,
+    "truth_in_region": false,
+    "region_m": 91.2,
+    "ring_m": 48.1
+   }
+  },
+  {
+   "seed": 1018,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 44,
+   "complaints": {
+    "first_ticket_error_m": 85.2,
+    "centroid_error_m": 233.9,
+    "n_tickets": 39
+   },
+   "gis": {
+    "error_m": 26.7,
+    "truth_in_region": true,
+    "region_m": 63.9,
+    "ring_m": 39.0
+   },
+   "rebuilt": {
+    "error_m": 5.3,
+    "truth_in_region": true,
+    "region_m": 63.9,
+    "ring_m": 32.1
+   }
+  },
+  {
+   "seed": 1019,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 689.3,
+    "centroid_error_m": 508.2,
+    "n_tickets": 3
+   },
+   "gis": {
+    "error_m": 620.3,
+    "truth_in_region": false,
+    "region_m": 119.8,
+    "ring_m": 272.4
+   },
+   "rebuilt": {
+    "error_m": 539.0,
+    "truth_in_region": false,
+    "region_m": 355.4,
+    "ring_m": 556.9
+   }
+  },
+  {
+   "seed": 1020,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 629.5,
+    "centroid_error_m": 288.5,
+    "n_tickets": 5
+   },
+   "gis": {
+    "error_m": 3.7,
+    "truth_in_region": true,
+    "region_m": 77.6,
+    "ring_m": 42.9
+   },
+   "rebuilt": {
+    "error_m": 3.7,
+    "truth_in_region": true,
+    "region_m": 77.6,
+    "ring_m": 43.1
+   }
+  },
+  {
+   "seed": 1021,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 237.6,
+    "centroid_error_m": 64.6,
+    "n_tickets": 5
+   },
+   "gis": {
+    "error_m": 218.2,
+    "truth_in_region": false,
+    "region_m": 2156.1,
+    "ring_m": 693.3
+   },
+   "rebuilt": {
+    "error_m": 206.8,
+    "truth_in_region": false,
+    "region_m": 631.7,
+    "ring_m": 728.2
+   }
+  },
+  {
+   "seed": 1022,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 276.8,
+    "centroid_error_m": 454.6,
+    "n_tickets": 2
+   },
+   "gis": {
+    "error_m": 546.4,
+    "truth_in_region": true,
+    "region_m": 6385.9,
+    "ring_m": 620.7
+   },
+   "rebuilt": {
+    "error_m": 588.1,
+    "truth_in_region": true,
+    "region_m": 3690.4,
+    "ring_m": 639.2
+   }
+  },
+  {
+   "seed": 1023,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 18,
+   "complaints": {
+    "first_ticket_error_m": 177.1,
+    "centroid_error_m": 193.8,
+    "n_tickets": 18
+   },
+   "gis": {
+    "error_m": 76.1,
+    "truth_in_region": true,
+    "region_m": 114.4,
+    "ring_m": 52.4
+   },
+   "rebuilt": {
+    "error_m": 12.6,
+    "truth_in_region": true,
+    "region_m": 253.7,
+    "ring_m": 92.5
+   }
+  },
+  {
+   "seed": 1024,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 18,
+   "complaints": {
+    "first_ticket_error_m": 569.6,
+    "centroid_error_m": 66.3,
+    "n_tickets": 23
+   },
+   "gis": {
+    "error_m": 8.8,
+    "truth_in_region": true,
+    "region_m": 83.3,
+    "ring_m": 46.6
+   },
+   "rebuilt": {
+    "error_m": 43.8,
+    "truth_in_region": true,
+    "region_m": 70.1,
+    "ring_m": 39.8
+   }
+  },
+  {
+   "seed": 1025,
+   "alert": true,
+   "true_alert": false,
+   "first_red_cycle": 1,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 309.5,
+    "centroid_error_m": 395.4,
+    "n_tickets": 7
+   },
+   "gis": {
+    "error_m": 276.0,
+    "truth_in_region": true,
+    "region_m": 6861.5,
+    "ring_m": 563.5
+   },
+   "rebuilt": {
+    "error_m": 251.5,
+    "truth_in_region": false,
+    "region_m": 3998.9,
+    "ring_m": 583.4
+   }
+  },
+  {
+   "seed": 1026,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 28,
+   "complaints": {
+    "first_ticket_error_m": 163.0,
+    "centroid_error_m": 274.6,
+    "n_tickets": 28
+   },
+   "gis": {
+    "error_m": 0.0,
+    "truth_in_region": true,
+    "region_m": 49.9,
+    "ring_m": 30.7
+   },
+   "rebuilt": {
+    "error_m": 72.1,
+    "truth_in_region": false,
+    "region_m": 32.1,
+    "ring_m": 17.9
+   }
+  },
+  {
+   "seed": 1027,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 321.3,
+    "centroid_error_m": 344.0,
+    "n_tickets": 6
+   },
+   "gis": {
+    "error_m": 109.8,
+    "truth_in_region": true,
+    "region_m": 5026.9,
+    "ring_m": 681.7
+   },
+   "rebuilt": {
+    "error_m": 109.8,
+    "truth_in_region": false,
+    "region_m": 3193.2,
+    "ring_m": 727.8
+   }
+  },
+  {
+   "seed": 1028,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 51,
+   "complaints": {
+    "first_ticket_error_m": 23.8,
+    "centroid_error_m": 227.0,
+    "n_tickets": 39
+   },
+   "gis": {
+    "error_m": 14.5,
+    "truth_in_region": true,
+    "region_m": 38.5,
+    "ring_m": 22.9
+   },
+   "rebuilt": {
+    "error_m": 14.5,
+    "truth_in_region": true,
+    "region_m": 38.5,
+    "ring_m": 19.4
+   }
+  },
+  {
+   "seed": 1029,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 794.8,
+    "centroid_error_m": 487.1,
+    "n_tickets": 6
+   },
+   "gis": {
+    "error_m": 814.3,
+    "truth_in_region": false,
+    "region_m": 473.9,
+    "ring_m": 363.3
+   },
+   "rebuilt": {
+    "error_m": 423.3,
+    "truth_in_region": false,
+    "region_m": 627.1,
+    "ring_m": 407.7
+   }
+  },
+  {
+   "seed": 1030,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 549.3,
+    "centroid_error_m": 481.8,
+    "n_tickets": 3
+   },
+   "gis": {
+    "error_m": 615.2,
+    "truth_in_region": false,
+    "region_m": 164.2,
+    "ring_m": 77.0
+   },
+   "rebuilt": {
+    "error_m": 651.5,
+    "truth_in_region": false,
+    "region_m": 85.5,
+    "ring_m": 76.1
+   }
+  },
+  {
+   "seed": 1031,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 17.9,
+    "centroid_error_m": 128.1,
+    "n_tickets": 3
+   },
+   "gis": {
+    "error_m": 16.0,
+    "truth_in_region": true,
+    "region_m": 32.2,
+    "ring_m": 16.1
+   },
+   "rebuilt": {
+    "error_m": 16.0,
+    "truth_in_region": true,
+    "region_m": 32.2,
+    "ring_m": 16.1
+   }
+  },
+  {
+   "seed": 1032,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 4,
+   "complaints": {
+    "first_ticket_error_m": 59.7,
+    "centroid_error_m": 180.2,
+    "n_tickets": 7
+   },
+   "gis": {
+    "error_m": 5.7,
+    "truth_in_region": true,
+    "region_m": 66.6,
+    "ring_m": 34.6
+   },
+   "rebuilt": {
+    "error_m": 5.7,
+    "truth_in_region": true,
+    "region_m": 66.6,
+    "ring_m": 33.8
+   }
+  },
+  {
+   "seed": 1033,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 7,
+   "complaints": {
+    "first_ticket_error_m": 37.5,
+    "centroid_error_m": 76.0,
+    "n_tickets": 10
+   },
+   "gis": {
+    "error_m": 6.4,
+    "truth_in_region": true,
+    "region_m": 48.5,
+    "ring_m": 25.9
+   },
+   "rebuilt": {
+    "error_m": 6.4,
+    "truth_in_region": true,
+    "region_m": 48.5,
+    "ring_m": 25.9
+   }
+  },
+  {
+   "seed": 1034,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 369.3,
+    "centroid_error_m": 233.5,
+    "n_tickets": 6
+   },
+   "gis": {
+    "error_m": 264.8,
+    "truth_in_region": false,
+    "region_m": 139.0,
+    "ring_m": 80.8
+   },
+   "rebuilt": {
+    "error_m": 264.8,
+    "truth_in_region": false,
+    "region_m": 84.6,
+    "ring_m": 37.8
+   }
+  },
+  {
+   "seed": 1035,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 2,
+   "complaints": {
+    "first_ticket_error_m": 231.8,
+    "centroid_error_m": 345.3,
+    "n_tickets": 9
+   },
+   "gis": {
+    "error_m": 1.4,
+    "truth_in_region": true,
+    "region_m": 54.6,
+    "ring_m": 26.4
+   },
+   "rebuilt": {
+    "error_m": 1.4,
+    "truth_in_region": true,
+    "region_m": 54.6,
+    "ring_m": 26.0
+   }
+  },
+  {
+   "seed": 1036,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 304.7,
+    "centroid_error_m": 304.7,
+    "n_tickets": 1
+   },
+   "gis": {
+    "error_m": 344.1,
+    "truth_in_region": true,
+    "region_m": 5954.2,
+    "ring_m": 551.1
+   },
+   "rebuilt": {
+    "error_m": 404.1,
+    "truth_in_region": false,
+    "region_m": 4208.9,
+    "ring_m": 554.7
+   }
+  },
+  {
+   "seed": 1037,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 54.6,
+    "centroid_error_m": 324.3,
+    "n_tickets": 8
+   },
+   "gis": {
+    "error_m": 127.2,
+    "truth_in_region": false,
+    "region_m": 102.1,
+    "ring_m": 84.3
+   },
+   "rebuilt": {
+    "error_m": 60.3,
+    "truth_in_region": false,
+    "region_m": 162.3,
+    "ring_m": 100.4
+   }
+  },
+  {
+   "seed": 1038,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 866.5,
+    "centroid_error_m": 478.2,
+    "n_tickets": 7
+   },
+   "gis": {
+    "error_m": 370.0,
+    "truth_in_region": false,
+    "region_m": 167.6,
+    "ring_m": 228.2
+   },
+   "rebuilt": {
+    "error_m": 266.1,
+    "truth_in_region": false,
+    "region_m": 104.7,
+    "ring_m": 161.9
+   }
+  },
+  {
+   "seed": 1039,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 3,
+   "complaints": {
+    "first_ticket_error_m": 374.5,
+    "centroid_error_m": 165.1,
+    "n_tickets": 10
+   },
+   "gis": {
+    "error_m": 3.4,
+    "truth_in_region": true,
+    "region_m": 32.5,
+    "ring_m": 16.3
+   },
+   "rebuilt": {
+    "error_m": 3.4,
+    "truth_in_region": true,
+    "region_m": 32.5,
+    "ring_m": 16.3
+   }
+  },
+  {
+   "seed": 1040,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 362.3,
+    "centroid_error_m": 86.3,
+    "n_tickets": 8
+   },
+   "gis": {
+    "error_m": 427.0,
+    "truth_in_region": true,
+    "region_m": 5875.3,
+    "ring_m": 657.6
+   },
+   "rebuilt": {
+    "error_m": 365.2,
+    "truth_in_region": false,
+    "region_m": 19.6,
+    "ring_m": 15.0
+   }
+  },
+  {
+   "seed": 1041,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 655.6,
+    "centroid_error_m": 353.3,
+    "n_tickets": 6
+   },
+   "gis": {
+    "error_m": 243.7,
+    "truth_in_region": true,
+    "region_m": 4184.3,
+    "ring_m": 860.1
+   },
+   "rebuilt": {
+    "error_m": 243.7,
+    "truth_in_region": false,
+    "region_m": 982.0,
+    "ring_m": 867.7
+   }
+  },
+  {
+   "seed": 1042,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 3,
+   "complaints": {
+    "first_ticket_error_m": 781.4,
+    "centroid_error_m": 248.4,
+    "n_tickets": 10
+   },
+   "gis": {
+    "error_m": 30.6,
+    "truth_in_region": true,
+    "region_m": 136.1,
+    "ring_m": 68.9
+   },
+   "rebuilt": {
+    "error_m": 47.9,
+    "truth_in_region": true,
+    "region_m": 86.8,
+    "ring_m": 43.8
+   }
+  },
+  {
+   "seed": 1043,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 688.1,
+    "centroid_error_m": 386.7,
+    "n_tickets": 3
+   },
+   "gis": {
+    "error_m": 425.0,
+    "truth_in_region": false,
+    "region_m": 2266.0,
+    "ring_m": 769.3
+   },
+   "rebuilt": {
+    "error_m": 425.0,
+    "truth_in_region": false,
+    "region_m": 349.1,
+    "ring_m": 277.1
+   }
+  },
+  {
+   "seed": 1044,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 348.9,
+    "centroid_error_m": 198.4,
+    "n_tickets": 4
+   },
+   "gis": {
+    "error_m": 332.2,
+    "truth_in_region": false,
+    "region_m": 95.5,
+    "ring_m": 145.0
+   },
+   "rebuilt": {
+    "error_m": 332.2,
+    "truth_in_region": false,
+    "region_m": 35.1,
+    "ring_m": 259.3
+   }
+  },
+  {
+   "seed": 1045,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 696.7,
+    "centroid_error_m": 482.2,
+    "n_tickets": 3
+   },
+   "gis": {
+    "error_m": 822.5,
+    "truth_in_region": true,
+    "region_m": 6729.3,
+    "ring_m": 552.5
+   },
+   "rebuilt": {
+    "error_m": 449.5,
+    "truth_in_region": false,
+    "region_m": 4490.7,
+    "ring_m": 571.3
+   }
+  },
+  {
+   "seed": 1046,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 7,
+   "complaints": {
+    "first_ticket_error_m": 105.0,
+    "centroid_error_m": 188.4,
+    "n_tickets": 10
+   },
+   "gis": {
+    "error_m": 16.1,
+    "truth_in_region": true,
+    "region_m": 68.1,
+    "ring_m": 36.9
+   },
+   "rebuilt": {
+    "error_m": 1.4,
+    "truth_in_region": true,
+    "region_m": 68.1,
+    "ring_m": 34.3
+   }
+  },
+  {
+   "seed": 1047,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 438.6,
+    "centroid_error_m": 329.3,
+    "n_tickets": 4
+   },
+   "gis": {
+    "error_m": 607.7,
+    "truth_in_region": true,
+    "region_m": 5590.5,
+    "ring_m": 790.1
+   },
+   "rebuilt": {
+    "error_m": 607.7,
+    "truth_in_region": false,
+    "region_m": 2466.9,
+    "ring_m": 884.6
+   }
+  },
+  {
+   "seed": 1048,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 17,
+   "complaints": {
+    "first_ticket_error_m": 34.0,
+    "centroid_error_m": 133.3,
+    "n_tickets": 18
+   },
+   "gis": {
+    "error_m": 2.3,
+    "truth_in_region": true,
+    "region_m": 52.6,
+    "ring_m": 31.0
+   },
+   "rebuilt": {
+    "error_m": 32.8,
+    "truth_in_region": true,
+    "region_m": 52.6,
+    "ring_m": 26.8
+   }
+  },
+  {
+   "seed": 1049,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 4,
+   "complaints": {
+    "first_ticket_error_m": 846.1,
+    "centroid_error_m": 174.0,
+    "n_tickets": 13
+   },
+   "gis": {
+    "error_m": 40.1,
+    "truth_in_region": true,
+    "region_m": 48.8,
+    "ring_m": 24.8
+   },
+   "rebuilt": {
+    "error_m": 7.6,
+    "truth_in_region": true,
+    "region_m": 48.8,
+    "ring_m": 25.1
+   }
+  },
+  {
+   "seed": 1050,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 12,
+   "complaints": {
+    "first_ticket_error_m": 116.3,
+    "centroid_error_m": 128.2,
+    "n_tickets": 18
+   },
+   "gis": {
+    "error_m": 103.5,
+    "truth_in_region": true,
+    "region_m": 282.7,
+    "ring_m": 90.7
+   },
+   "rebuilt": {
+    "error_m": 66.8,
+    "truth_in_region": false,
+    "region_m": 54.7,
+    "ring_m": 28.1
+   }
+  },
+  {
+   "seed": 1051,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 3,
+   "complaints": {
+    "first_ticket_error_m": 146.7,
+    "centroid_error_m": 140.8,
+    "n_tickets": 8
+   },
+   "gis": {
+    "error_m": 35.5,
+    "truth_in_region": true,
+    "region_m": 83.5,
+    "ring_m": 43.9
+   },
+   "rebuilt": {
+    "error_m": 272.0,
+    "truth_in_region": true,
+    "region_m": 156.6,
+    "ring_m": 259.2
+   }
+  },
+  {
+   "seed": 1052,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 33,
+   "complaints": {
+    "first_ticket_error_m": 155.6,
+    "centroid_error_m": 299.8,
+    "n_tickets": 28
+   },
+   "gis": {
+    "error_m": 3.5,
+    "truth_in_region": true,
+    "region_m": 72.0,
+    "ring_m": 43.4
+   },
+   "rebuilt": {
+    "error_m": 38.4,
+    "truth_in_region": false,
+    "region_m": 68.9,
+    "ring_m": 45.0
+   }
+  },
+  {
+   "seed": 1053,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 0,
+   "complaints": {
+    "first_ticket_error_m": 484.2,
+    "centroid_error_m": 244.0,
+    "n_tickets": 2
+   },
+   "gis": {
+    "error_m": 240.8,
+    "truth_in_region": true,
+    "region_m": 2430.7,
+    "ring_m": 822.5
+   },
+   "rebuilt": {
+    "error_m": 240.8,
+    "truth_in_region": false,
+    "region_m": 615.6,
+    "ring_m": 836.1
+   }
+  },
+  {
+   "seed": 1054,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 5,
+   "complaints": {
+    "first_ticket_error_m": 357.5,
+    "centroid_error_m": 185.2,
+    "n_tickets": 12
+   },
+   "gis": {
+    "error_m": 29.1,
+    "truth_in_region": true,
+    "region_m": 71.6,
+    "ring_m": 36.0
+   },
+   "rebuilt": {
+    "error_m": 24.6,
+    "truth_in_region": true,
+    "region_m": 71.6,
+    "ring_m": 36.0
+   }
+  },
+  {
+   "seed": 1055,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 1,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 50.0,
+    "centroid_error_m": 386.1,
+    "n_tickets": 7
+   },
+   "gis": {
+    "error_m": 17.9,
+    "truth_in_region": true,
+    "region_m": 142.3,
+    "ring_m": 69.8
+   },
+   "rebuilt": {
+    "error_m": 17.9,
+    "truth_in_region": true,
+    "region_m": 159.3,
+    "ring_m": 78.0
+   }
+  },
+  {
+   "seed": 1056,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 4,
+   "complaints": {
+    "first_ticket_error_m": 434.8,
+    "centroid_error_m": 59.8,
+    "n_tickets": 10
+   },
+   "gis": {
+    "error_m": 105.9,
+    "truth_in_region": false,
+    "region_m": 131.8,
+    "ring_m": 61.6
+   },
+   "rebuilt": {
+    "error_m": 118.0,
+    "truth_in_region": false,
+    "region_m": 65.2,
+    "ring_m": 32.7
+   }
+  },
+  {
+   "seed": 1057,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 603.5,
+    "centroid_error_m": 232.2,
+    "n_tickets": 7
+   },
+   "gis": {
+    "error_m": 30.5,
+    "truth_in_region": true,
+    "region_m": 102.9,
+    "ring_m": 46.0
+   },
+   "rebuilt": {
+    "error_m": 30.5,
+    "truth_in_region": true,
+    "region_m": 69.0,
+    "ring_m": 36.7
+   }
+  },
+  {
+   "seed": 1058,
+   "alert": false,
+   "true_alert": false,
+   "first_red_cycle": null,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 149.7,
+    "centroid_error_m": 128.6,
+    "n_tickets": 5
+   },
+   "gis": {
+    "error_m": 41.6,
+    "truth_in_region": true,
+    "region_m": 92.8,
+    "ring_m": 49.3
+   },
+   "rebuilt": {
+    "error_m": 41.6,
+    "truth_in_region": true,
+    "region_m": 111.4,
+    "ring_m": 55.1
+   }
+  },
+  {
+   "seed": 1059,
+   "alert": true,
+   "true_alert": true,
+   "first_red_cycle": 2,
+   "downstream_homes": 1,
+   "complaints": {
+    "first_ticket_error_m": 52.5,
+    "centroid_error_m": 285.5,
+    "n_tickets": 6
+   },
+   "gis": {
+    "error_m": 4.6,
+    "truth_in_region": true,
+    "region_m": 100.7,
+    "ring_m": 45.8
+   },
+   "rebuilt": {
+    "error_m": 4.6,
+    "truth_in_region": true,
+    "region_m": 100.7,
+    "ring_m": 44.1
+   }
+  }
+ ]
+}

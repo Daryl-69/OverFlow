@@ -1,0 +1,17 @@
+{"version": 0.6, "generator": "Overpass API (test fixture)", "elements": [
+  {"type": "node", "id": 1, "lat": 22.7400, "lon": 75.8600},
+  {"type": "node", "id": 2, "lat": 22.7400, "lon": 75.8610},
+  {"type": "node", "id": 3, "lat": 22.7400, "lon": 75.8620},
+  {"type": "node", "id": 4, "lat": 22.7410, "lon": 75.8610},
+  {"type": "node", "id": 5, "lat": 22.7410, "lon": 75.8620},
+  {"type": "node", "id": 6, "lat": 22.7390, "lon": 75.8600},
+  {"type": "node", "id": 7, "lat": 22.7500, "lon": 75.8700},
+  {"type": "node", "id": 8, "lat": 22.7501, "lon": 75.8701},
+  {"type": "way", "id": 100, "nodes": [1, 2, 3], "tags": {"highway": "residential", "name": "Lane A"}},
+  {"type": "way", "id": 101, "nodes": [2, 4, 5, 3], "tags": {"highway": "service"}},
+  {"type": "way", "id": 102, "nodes": [1, 6], "tags": {"highway": "footway"}},
+  {"type": "way", "id": 103, "nodes": [7, 8], "tags": {"highway": "residential"}},
+  {"type": "way", "id": 104, "nodes": [4, 4], "tags": {"highway": "residential"}},
+  {"type": "way", "id": 105, "nodes": [1, 2], "tags": {"highway": "residential"}},
+  {"type": "way", "id": 106, "nodes": [3, 5, 2], "tags": {"highway": "pedestrian", "area": "yes"}}
+]}

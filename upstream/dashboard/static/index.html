@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%278%27 fill=%27%230f2a35%27/%3E%3Cpath d=%27M4 21h7l3-9 4 16 4-12 3 7 3-2h8%27 fill=%27none%27 stroke=%27%23e07cc4%27 stroke-width=%273%27 stroke-linejoin=%27round%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<title>Upstream Breach Locator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="upstream" data-mode="app">
+ <div class="screen">
+  <header class="top">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 24" aria-hidden="true"><path d="M1 12h8l3-9 4 18 4-14 3 8 3-3h13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <div>
+        <h1>Upstream</h1>
+        <p class="tagline">Seismology for sewage · find the leak from the first dirty glass</p>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Views">
+      <button role="tab" id="tab-btn-replay" aria-controls="tab-replay" aria-selected="true" data-tab="replay">Outbreak replay</button>
+      <button role="tab" id="tab-btn-live" aria-controls="tab-live" aria-selected="false" data-tab="live" data-app-only>Live intake</button>
+      <button role="tab" id="tab-btn-card" aria-controls="tab-card" aria-selected="false" data-tab="card">Household card</button>
+      <a class="tab-link" href="#how">How it works</a>
+    </nav>
+    <div class="ward" id="ward-label">Loading ward…</div>
+  </header>
+
+  <main class="room">
+    <section class="mapwrap" aria-label="Ward map">
+      <div class="mapbar">
+        <div class="grp" role="radiogroup" aria-labelledby="net-lbl">
+          <span class="grp-lbl" id="net-lbl">Pipe map</span>
+          <label><input type="radio" name="net" id="net-gis" value="gis" checked> Utility GIS</label>
+          <label><input type="radio" name="net" id="net-rebuilt" value="rebuilt"> Rebuilt from photo timings</label>
+        </div>
+        <div class="grp" role="group" aria-labelledby="lyr-lbl">
+          <span class="grp-lbl" id="lyr-lbl">Layers</span>
+          <label><input type="checkbox" id="lyr-truth" checked> True breach <small>(simulation)</small></label>
+          <label><input type="checkbox" id="lyr-planb"> Plan B graph rule</label>
+          <label><input type="checkbox" id="lyr-risk"> Risk map</label>
+        </div>
+      </div>
+      <div class="mapbox">
+        <div id="map" role="img" aria-label="Map of streets, water pipes, reporting homes and the suspected breach"></div>
+        <ul class="legend" aria-label="Map legend">
+          <li><span class="key key-pipe"></span>Water pipe</li>
+          <li><span class="key key-post"></span>Breach probability</li>
+          <li><span class="key key-ring"></span>Uncertainty ring</li>
+          <li><span class="key key-dot lv-green"></span>Green</li>
+          <li><span class="key key-dot lv-amber"></span>Amber</li>
+          <li><span class="key key-dot lv-red"></span>Red</li>
+          <li><span class="key key-dot lv-none"></span>No photo yet</li>
+        </ul>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <!-- REPLAY -->
+      <section id="tab-replay" role="tabpanel" aria-labelledby="tab-btn-replay">
+        <div class="clock-row">
+          <div>
+            <div class="eyebrow" id="cycle-label">Supply cycle</div>
+            <div class="clock" id="clock">—</div>
+          </div>
+          <div class="controls">
+            <button class="btn icon" id="btn-restart" aria-label="Restart replay" title="Restart">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4v12M16 4 7 10l9 6z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="btn primary" id="btn-play" aria-label="Play replay">Play</button>
+            <label class="speed">Speed
+              <select id="speed">
+                <option value="60">1×</option>
+                <option value="240" selected>4×</option>
+                <option value="960">16×</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <input type="range" id="scrub" min="0" max="0" value="0" aria-label="Replay position">
+        <div class="banner" id="banner" role="status">—</div>
+
+        <dl class="metrics" id="metrics">
+          <div><dt>Photos this supply</dt><dd id="m-reports">—</dd></div>
+          <div><dt>Breach confidence</dt><dd id="m-pbreach">—</dd></div>
+          <div><dt>Uncertainty ring</dt><dd id="m-ring">—</dd></div>
+          <div><dt>Pipe left to search</dt><dd id="m-region">—</dd></div>
+          <div><dt>Dig spot to true breach</dt><dd id="m-error">—</dd></div>
+          <div><dt>Plan B search length</dt><dd id="m-planb">—</dd></div>
+        </dl>
+
+        <figure class="chart-fig">
+          <figcaption>
+            <span class="fig-title">Arrival record</span>
+            <span class="fig-sub">Each dot is one first-glass photo: when it was taken, and how much cloudier it was than that tap's normal.</span>
+          </figcaption>
+          <div id="chart" class="chart"></div>
+          <ul class="legend inline" aria-label="Chart legend">
+            <li><span class="key key-dot lv-green"></span>Green</li>
+            <li><span class="key key-dot lv-amber"></span>Amber</li>
+            <li><span class="key key-dot lv-red"></span>Red</li>
+            <li><span class="key key-vline"></span>Front reaches dig spot</li>
+          </ul>
+        </figure>
+
+        <h2 class="h">Incoming photos</h2>
+        <ol class="feed" id="feed"></ol>
+
+        <div id="outputs"></div>
+      </section>
+
+      <!-- LIVE (app only) -->
+      <section id="tab-live" role="tabpanel" aria-labelledby="tab-btn-live" hidden>
+        <div class="live-head">
+          <div>
+            <div class="eyebrow">Live supply</div>
+            <div class="clock sm" id="live-clock">No supply started</div>
+          </div>
+          <div class="controls">
+            <button class="btn primary" id="btn-supply">Water is on now</button>
+            <button class="btn" id="btn-reset">Clear live data</button>
+          </div>
+        </div>
+        <div class="banner" id="live-banner" role="status">Send a photo to start.</div>
+        <div class="phone">
+          <img id="phone-qr" alt="QR code that opens the household photo page on a phone" width="112" height="112">
+          <div>
+            <h2 class="h">On a phone</h2>
+            <p>Scan to open the household page, photograph the card with a glass and strip on it, and send.</p>
+            <p class="mono" id="phone-url"></p>
+          </div>
+        </div>
+        <form id="photo-form" class="form">
+          <h2 class="h">Send a photo from here</h2>
+          <label for="photo-file">Card photo</label>
+          <input type="file" id="photo-file" name="photo" accept="image/*" required>
+          <div class="row">
+            <div>
+              <label for="photo-hh">Household (if the QR is unreadable)</label>
+              <input id="photo-hh" name="household" placeholder="H-0042" autocomplete="off">
+            </div>
+            <div>
+              <label for="photo-answer">Quick answer</label>
+              <select id="photo-answer" name="answer">
+                <option value="">—</option><option value="fine">Fine</option><option value="smell">Smells bad</option>
+                <option value="dirty">Looks dirty</option><option value="ill">Someone is ill</option>
+              </select>
+            </div>
+          </div>
+          <div class="row buttons">
+            <button class="btn primary" type="submit">Read and send</button>
+            <button class="btn" type="button" id="btn-demo-photo">Use a muddy demo photo</button>
+          </div>
+          <div id="photo-result" class="result" aria-live="polite"></div>
+        </form>
+        <form id="manual-form" class="form">
+          <h2 class="h">Type in a reading</h2>
+          <div class="row">
+            <div><label for="man-hh">Household</label><input id="man-hh" required placeholder="H-0008" autocomplete="off"></div>
+            <div><label for="man-turb">Cloudiness index (0–1)</label><input id="man-turb" type="number" min="0" max="1" step="0.01" value="0.08"></div>
+            <div><label for="man-cl">Chlorine mg/L</label><input id="man-cl" type="number" min="0" max="10" step="0.05" value="0.6"></div>
+          </div>
+          <div class="row buttons"><button class="btn" type="submit">Add reading</button></div>
+        </form>
+        <dl class="metrics" id="live-metrics"></dl>
+        <h2 class="h">Live photos</h2>
+        <ol class="feed" id="live-feed"></ol>
+        <div id="live-outputs"></div>
+        <p class="links"><a href="/api/evidence.csv">Evidence (CSV)</a> · <a href="/api/evidence.json">Evidence (JSON)</a> · <a href="/docs">API</a></p>
+      </section>
+
+      <!-- CARD -->
+      <section id="tab-card" role="tabpanel" aria-labelledby="tab-btn-card" hidden>
+        <h2 class="h">The first-glass card</h2>
+        <p>A5, printed at 100%. The four corner squares let the phone undo the angle; the checkerboard under the glass blurs as water gets cloudier; the strip pad sits next to the printed chlorine scale so both are seen under the same light. The QR code carries only the household ID.</p>
+        <div class="card-pick" data-app-only>
+          <label for="card-hh">Household ID</label>
+          <input id="card-hh" value="H-0001" autocomplete="off">
+        </div>
+        <img id="card-img" class="card-img" src="card.svg" alt="The Upstream first-glass card: corner markers, glass circle over a checkerboard, strip slot, chlorine colour scale, colour patches and a QR code">
+        <p class="links" id="card-links"><a id="card-svg" href="card.svg" download>Download SVG</a></p>
+        <h3 class="h3">Strip packs</h3>
+        <table class="tbl">
+          <thead><tr><th>Pack</th><th>Who gets it</th><th>How it is used</th></tr></thead>
+          <tbody>
+            <tr><td class="num">10</td><td>Regular households</td><td>When water looks or smells wrong, weekly baseline, and when the app asks during an alert</td></tr>
+            <tr><td class="num">14</td><td>Lane volunteers</td><td>One test per supply for two weeks (four in alternate-day areas)</td></tr>
+            <tr><td class="num">21</td><td>Sentinel homes</td><td>Daily tests for three weeks; placed by the planner</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </aside>
+  </main>
+ </div>
+
+  <section class="explain" id="how">
+    <div class="explain-inner">
+      <h2>How Upstream finds the crack</h2>
+      <p class="lede">In cities where water runs an hour or two a day, sewage seeps into emptied pipes between supplies. When the water comes back, the front picks up that dirty slug and carries it downstream. Homes just downstream get dirty first water; homes farther on get it more diluted; homes upstream never see it. Seismologists locate an earthquake from when its waves reach each station. Upstream does the same with first glasses of water.</p>
+      <div class="cols">
+        <div>
+          <h3 class="h3">Earthquake → sewage</h3>
+          <table class="tbl">
+            <tbody>
+              <tr><th scope="row">Epicentre</th><td>The pipe piece where sewage gets in</td></tr>
+              <tr><th scope="row">Seismograph stations</th><td>Homes photographing their first glass</td></tr>
+              <tr><th scope="row">Wave arrival time</th><td>When the dirty slug reaches each tap</td></tr>
+              <tr><th scope="row">Wave strength</th><td>Cloudiness and how far chlorine has dropped</td></tr>
+              <tr><th scope="row">Velocity model</th><td>Travel times learned from normal-day photos</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 class="h3">What runs underneath</h3>
+          <ul class="plain">
+            <li><b>Reader.</b> Corner markers fix the angle; printed patches fix the light; the checkerboard's contrast loss gives cloudiness; the strip pad is placed on the printed chlorine scale.</li>
+            <li><b>Levels.</b> Green, amber or red against each tap's own baseline and the 0.2 mg/L chlorine minimum (IS 10500).</li>
+            <li><b>Velocity model.</b> Normal-day photo times give each pipe's travel time and the direction water runs round loops — or rebuild a missing pipe map.</li>
+            <li><b>Triangulation.</b> Every 20 m pipe piece is scored against every photo, averaging over plausible flow directions, so a few pranks barely move it.</li>
+            <li><b>Outputs.</b> A dig spot with its evidence, a personal safe-after time for each downstream home, and which homes should test next.</li>
+          </ul>
+        </div>
+      </div>
+      <div id="eval-block"></div>
+      <p class="caveat" id="caveat"></p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span id="attribution"></span>
+    <span>Upstream is an early-warning and leak-finding tool, not a safety certificate. Red alerts still go to lab confirmation.</span>
+  </footer>
+  <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+</div>
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

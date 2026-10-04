@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "upstream"
+version = "0.1.0"
+description = "Seismology for sewage: locate sewage intrusion in intermittent water networks from first-glass photos."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+  "numpy>=1.24",
+  "networkx>=3.0",
+  "opencv-python-headless>=4.8",
+  "pillow>=10.0",
+  "fastapi>=0.110",
+  "uvicorn>=0.27",
+  "python-multipart>=0.0.9",
+  "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+upstream = "upstream.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["upstream*"]
+
+[tool.setuptools.package-data]
+"upstream.dashboard" = ["static/**/*"]
+"upstream.intake" = ["static/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

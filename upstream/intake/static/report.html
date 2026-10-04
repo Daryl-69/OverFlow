@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%278%27 fill=%27%230f2a35%27/%3E%3Cpath d=%27M4 21h7l3-9 4 16 4-12 3 7 3-2h8%27 fill=%27none%27 stroke=%27%23e07cc4%27 stroke-width=%273%27 stroke-linejoin=%27round%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<title>Upstream First Glass</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* One column, thumb-sized controls: a household sends one photo per supply. */
+:root {
+  --paper: #f3f6f7; --panel: #ffffff; --ink: #0f2a35; --ink-2: #44606c; --rule: #d3dee3; --dpd: #a3307f;
+  --good: #0ca30c; --warn: #fab219; --crit: #d03b3b; --focus: #2a6f97;
+  --font-display: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #0c171c; --panel: #12222a; --ink: #e4eef2; --ink-2: #a6bcc6; --rule: #22404b; --dpd: #e07cc4; --focus: #5aa9d6; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --paper: #0c171c; --panel: #12222a; --ink: #e4eef2; --ink-2: #a6bcc6; --rule: #22404b; --dpd: #e07cc4; --focus: #5aa9d6; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--font-body); }
+main { max-width: 520px; margin: 0 auto; padding: 20px 16px 40px; display: flex; flex-direction: column; gap: 18px; }
+h1 { margin: 0; font: 700 26px/1.1 var(--font-display); text-transform: uppercase; letter-spacing: .02em; }
+.sub { margin: 4px 0 0; color: var(--ink-2); }
+ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+form { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+label { font-weight: 600; font-size: 14px; }
+input, select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 10px; width: 100%; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; border: 0; margin: 0; padding: 0; }
+.chips legend { font-weight: 600; font-size: 14px; margin-bottom: 6px; padding: 0; }
+.chips label { font-weight: 400; display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
+.chips input { width: auto; }
+button { font: 600 16px/1 var(--font-body); padding: 14px; border-radius: 8px; border: 0; background: var(--ink); color: var(--panel); cursor: pointer; }
+button:disabled { opacity: .6; }
+.result { background: var(--panel); border: 1px solid var(--rule); border-left: 6px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.result.green { border-left-color: var(--good); } .result.amber { border-left-color: var(--warn); } .result.red { border-left-color: var(--crit); }
+.result h2 { margin: 0; font: 700 18px/1.2 var(--font-display); text-transform: uppercase; letter-spacing: .03em; }
+.result p { margin: 0; }
+.mono { font-family: var(--font-mono); }
+.links { font-size: 14px; color: var(--ink-2); }
+.links a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Upstream first glass</h1>
+    <p class="sub">One photo of the first water of each supply helps find leaks before people get sick.</p>
+  </header>
+  <ol class="steps">
+    <li>When the water comes on, fill a clear glass with the <b>first</b> water.</li>
+    <li>Stand it on the card's circle; dip a chlorine strip and lay it in the slot.</li>
+    <li>Photograph the whole card, all four corner squares in view.</li>
+  </ol>
+  <form id="f">
+    <div class="field">
+      <label for="photo">Photo of the card</label>
+      <input type="file" id="photo" name="photo" accept="image/*" capture="environment" required>
+    </div>
+    <div class="field">
+      <label for="household">Household ID <span class="sub">(only if the card's QR code is damaged)</span></label>
+      <input id="household" name="household" autocomplete="off" placeholder="H-0042">
+    </div>
+    <fieldset class="chips">
+      <legend>How is the water today?</legend>
+      <label><input type="radio" name="answer" value="fine"> Fine</label>
+      <label><input type="radio" name="answer" value="smell"> Smells bad</label>
+      <label><input type="radio" name="answer" value="dirty"> Looks dirty</label>
+      <label><input type="radio" name="answer" value="ill"> Someone is ill</label>
+    </fieldset>
+    <button type="submit" id="send">Send reading</button>
+  </form>
+  <div id="out" aria-live="polite"></div>
+  <p class="links">Only your household ID travels with the photo. Readings are used for water safety only.
+    <a id="card-link" href="/card/H-0001.svg">Print a card</a></p>
+</main>
+<script>
+(() => {
+  const q = new URLSearchParams(location.search);
+  const hh = (q.get('h') || '').replace(/[^A-Za-z0-9_-]/g, '');
+  if (hh) { document.getElementById('household').value = hh; document.getElementById('card-link').href = '/card/' + hh + '.svg'; }
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const out = document.getElementById('out');
+  const TITLE = { green: 'Normal reading', amber: 'Unusual reading', red: 'Warning: possible contamination' };
+  document.getElementById('f').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('send');
+    const fd = new FormData(e.target);
+    if (!fd.get('household')) fd.delete('household');
+    btn.disabled = true; btn.textContent = 'Reading your photo…';
+    out.innerHTML = '';
+    try {
+      const res = await fetch('/api/photo', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (!res.ok) {
+        const tips = (data.issues || []).map((i) => '<li>' + esc(i.split(': ').slice(-1)[0]) + '</li>').join('');
+        out.innerHTML = '<div class="result"><h2>Please try again</h2>' + (tips ? '<ul>' + tips + '</ul>' : '<p>' + esc(data.error || 'The photo could not be used.') + '</p>') + '</div>';
+      } else {
+        const r = data.report;
+        const bits = [];
+        if (r.turbidity != null) bits.push('cloudiness index ' + r.turbidity.toFixed(2));
+        if (r.chlorine != null) bits.push('free chlorine ' + r.chlorine.toFixed(2) + ' mg/L');
+        out.innerHTML = '<div class="result ' + esc(data.level) + '"><h2>' + esc(TITLE[data.level] || data.level) + '</h2>'
+          + '<p class="mono">' + esc(r.household) + ' · ' + esc(bits.join(' · ')) + '</p><p>' + esc(data.message) + '</p></div>';
+      }
+    } catch (err) {
+      out.innerHTML = '<div class="result"><h2>Not sent</h2><p>Check your connection and try again.</p></div>';
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send reading';
+    }
+  });
+})();
+</script>
+</body>
+</html>

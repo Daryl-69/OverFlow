@@ -2,7 +2,16 @@
 
 > Find the sewage leak in a city's water pipes from the timing of the first dirty glass in each home — before it becomes an outbreak.
 
-**Hackathon track:** Heat & Water  ·  **Hardware in the pipes:** none  ·  **Household kit:** a printed card + chlorine test strips  ·  **Status:** concept + hackathon build plan
+**Hackathon track:** Heat & Water  ·  **Hardware in the pipes:** none  ·  **Household kit:** a printed card + chlorine test strips  ·  **Status:** working hackathon build (see [BUILD.md](BUILD.md))
+
+### Try it
+
+```bash
+pip install -e ".[dev]"
+upstream serve        # dashboard at http://127.0.0.1:8000/dashboard/, household page at /report
+```
+
+The dashboard replays a simulated Bhagirathpura-style outbreak photo by photo and takes live photos of the printed card. [BUILD.md](BUILD.md) covers the demo, how the locator works, results in simulation, real street grids, card calibration, WhatsApp and the API.
 
 ---
 
@@ -16,7 +25,7 @@
 6. [The demo](#6-the-demo)
 7. [Build plan](#7-build-plan)
 8. [Tech stack](#8-tech-stack)
-9. [Proposed repo structure](#9-proposed-repo-structure)
+9. [Repo structure](#9-repo-structure)
 10. [Judge questions and answers](#10-judge-questions-and-answers)
 11. [Limitations and mitigations](#11-limitations-and-mitigations)
 12. [Impact and adoption path](#12-impact-and-adoption-path)
@@ -291,18 +300,24 @@ The safe-after time comes straight from the model: it knows when the slug reache
 
 ---
 
-## 9. Proposed repo structure
+## 9. Repo structure
+
+The proposed layout below is now built as one Python package, `upstream/` (see [BUILD.md](BUILD.md)):
 
 ```
 upstream/
-├── README.md
-├── card/        # printable card (SVG/PDF), marker IDs, colour patch values
-├── reader/      # OpenCV turbidity and chlorine-strip reading, calibration
-├── sim/         # street-grid pipe simulator and outbreak scenarios
-├── locate/      # triangulation, pipe-map rebuilding, sentinel planner
-├── intake/      # WhatsApp bot or web form
-├── dashboard/   # Leaflet map UI
-└── data/        # calibration photos and synthetic scenarios (no personal data)
+├── card/        # printable card: one spec for the SVG, the raster render and the reader
+├── reader/      # OpenCV turbidity and chlorine-strip reading, photo checks, calibration
+├── sim/         # street grids (synthetic or OpenStreetMap), pipe layout, households, outbreaks
+├── locate/      # baselines, levels, travel times, triangulation, Plan B, map rebuilding,
+│                #   safe-after advisories, sentinel planner
+├── intake/      # FastAPI app, SQLite store, household photo page, WhatsApp webhook
+├── dashboard/   # Leaflet map UI: outbreak replay, live intake, household card
+├── network.py   # first-arrival flow tree over a (possibly looped) pipe network
+├── physics.py   # how the dirty slug dilutes and spreads downstream
+└── scenario.py  # the end-to-end replay: normal days -> outbreak -> alerts -> dig spot
+data/            # synthetic scenario replay and evaluation results (no personal data)
+tests/           # pytest suite
 ```
 
 ---
