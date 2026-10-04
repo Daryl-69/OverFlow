@@ -61,6 +61,11 @@ def export_artifact(out_file: Path, scenario_path: Path, evaluation_path: Path |
     fonts = re.search(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^"]*">', html).group(0)
     body = re.search(r"<body>(.*)</body>", html, re.S).group(1)
     body = _set_mode(body, "artifact")
+    # The live tab needs the server, and the artifact viewer cannot download files: drop both.
+    body, n_live = re.subn(r'\s*<!-- LIVE \(app only\) -->\s*<section id="tab-live".*?</section>', "", body, flags=re.S)
+    body, n_links = re.subn(r'\s*<p class="links" id="card-links">.*?</p>', "", body, flags=re.S)
+    if n_live != 1 or n_links != 1:
+        raise RuntimeError("dashboard template is missing the live tab or the card links")
     svg = card_svg(household).encode()
     body = body.replace('src="card.svg"', f'src="data:image/svg+xml;base64,{base64.b64encode(svg).decode()}"', 1)
     data = json.dumps(_scenario(scenario_path, evaluation_path), separators=(",", ":")).replace("</", "<\\/")

@@ -563,7 +563,7 @@
   function setTab(tab) {
     V.tab = tab;
     for (const b of $$('.tabs button')) b.setAttribute('aria-selected', String(b.dataset.tab === tab));
-    for (const s of ['replay', 'live', 'card']) $('#tab-' + s).hidden = s !== tab;
+    for (const s of ['replay', 'live', 'card']) { const el = $('#tab-' + s); if (el) el.hidden = s !== tab; }
     clearInterval(liveTimer);
     if (tab === 'live') {
       if (V.playing) stop();
@@ -584,11 +584,12 @@
       const update = () => {
         const id = ($('#card-hh').value.trim() || 'H-0001').replace(/[^A-Za-z0-9_-]/g, '');
         img.src = `/card/${encodeURIComponent(id)}.svg`;
-        $('#card-links').innerHTML = `<a href="/card/${encodeURIComponent(id)}.svg" download="upstream-card-${esc(id)}.svg">Download SVG</a> · <a href="/card/${encodeURIComponent(id)}.png?dpi=300" download="upstream-card-${esc(id)}.png">Download PNG (300 dpi)</a>`;
+        $('#card-svg').href = `/card/${encodeURIComponent(id)}.svg`;
+        $('#card-png').href = `/card/${encodeURIComponent(id)}.png?dpi=300`;
       };
       $('#card-hh').addEventListener('change', update);
       update();
-    } else if (MODE === 'artifact') {
+    } else if (MODE === 'artifact' && $('#card-links')) {
       $('#card-links').hidden = true;
     }
   }
@@ -623,8 +624,8 @@
       return;
     }
     index();
-    const st = S.meta.synthetic ? 'synthetic ward' : 'OpenStreetMap streets';
-    $('#ward-label').innerHTML = `<b>${esc(S.meta.name)}</b> · ${esc(st)} · ${S.households.length} homes · ${fmtM(S.rebuilt.score.true_length_m)} of pipe`;
+    const st = S.meta.synthetic ? '' : ' · OpenStreetMap streets';
+    $('#ward-label').innerHTML = `<b>${esc(S.meta.name)}</b>${st} · ${S.households.length} homes · ${fmtM(S.rebuilt.score.true_length_m)} of pipe`;
     initMap();
     $('#scrub').max = String(F());
     V.i = F();  // open on the finished picture; Play replays it from the start

@@ -32,3 +32,7 @@ def test_artifact_export_is_self_contained(tmp_path, scenario_file):
     data = json.loads(m.group(1))
     assert data["evaluation"]["runs"] == 3 and "rows" not in data["evaluation"]
     assert 'src="data:image/svg+xml;base64,' in page
+    # no file downloads and no server-only features in the artifact
+    assert "download" not in page.lower().replace("downloads", "")
+    assert "/api/" not in page.split('id="scenario-data"')[0]
+    assert 'id="tab-live"' not in page and 'id="tab-replay"' in page and 'id="tab-card"' in page
